@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-import config from './config';
+import config from '../config';
 
 import React, { Component } from 'react';
 import {

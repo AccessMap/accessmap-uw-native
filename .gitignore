@@ -1,6 +1,9 @@
 # Project-specific
 config.js
 
+# Vim
+*.swp
+
 # OSX
 #
 .DS_Store
