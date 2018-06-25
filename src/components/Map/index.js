@@ -16,8 +16,8 @@ export default class Map extends Component<Props> {
     return (
       <View style={styles.container}>
         <MapboxGL.MapView
-          centerCoordinate={[-122.333592, 47.605628]}
-          zoomLevel={12}
+          centerCoordinate={[-122.306411, 47.654572]}
+          zoomLevel={14}
           style={styles.map}
           styleURL='mapbox://styles/mapbox/streets-v8'
         />
