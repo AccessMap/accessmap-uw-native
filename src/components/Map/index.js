@@ -11,7 +11,7 @@ import MapboxGL from '@mapbox/react-native-mapbox-gl';
 MapboxGL.setAccessToken(config.mapboxAccessToken);
 
 type Props = {};
-export default class App extends Component<Props> {
+export default class Map extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>

@@ -12,7 +12,8 @@ export default StyleSheet.create({
     flex: 1,
     width: '100%',
   },
-  bottomcard: {
+  bottomview: {
     height: 160,
+    padding: 8,
   },
 });
