@@ -12,9 +12,7 @@ export default StyleSheet.create({
     flex: 1,
     width: '100%',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  bottomcard: {
+    height: 160,
   },
 });
