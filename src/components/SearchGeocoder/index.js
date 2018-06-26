@@ -9,7 +9,10 @@ export default class SearchGeocoder extends Component<Props> {
   render() {
     return (
       <Item rounded>
-        <Input placeholder='Search address' />
+        <Input
+          placeholder='Search address'
+          onFocus={() => console.log('focus!')}
+        />
       </Item>
     );
   }

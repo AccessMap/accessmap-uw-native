@@ -19,7 +19,7 @@ export default class SearchCard extends Component<Props> {
       <View style={styles.bottomview}>
         <SearchGeocoder />
         <View style={{ flexDirection: 'row', marginTop: 8 }}>
-          <Button iconLeft>
+          <Button iconLeft onPress={() => console.log('press!')}>
             <Icon name='trending-up' />
             <Text>Get Directions</Text>
           </Button>
