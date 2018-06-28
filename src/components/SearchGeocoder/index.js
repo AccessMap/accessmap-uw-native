@@ -6,12 +6,21 @@ import {
 
 type Props = {};
 export default class SearchGeocoder extends Component<Props> {
+  blur = () => {
+    this._input._root.blur()
+  }
+
   render() {
+    const {
+      onFocus,
+    } = this.props;
+
     return (
       <Item rounded>
         <Input
+          ref={c => this._input = c}
           placeholder='Search address'
-          onFocus={() => console.log('focus!')}
+          onFocus={onFocus}
         />
       </Item>
     );

@@ -15,9 +15,14 @@ import SearchGeocoder from '../SearchGeocoder';
 type Props = {};
 export default class SearchCard extends Component<Props> {
   render() {
+    const {
+      onSearchOpen,
+      ref,
+    } = this.props;
+
     return (
-      <View style={styles.bottomview}>
-        <SearchGeocoder />
+      <View ref={ref} style={styles.bottomview}>
+        <SearchGeocoder onFocus={onSearchOpen} />
         <View style={{ flexDirection: 'row', marginTop: 8 }}>
           <Button
             iconLeft
