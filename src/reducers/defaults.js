@@ -4,6 +4,7 @@ export const defaultMap = {
   poi: null,
   origin: null,
   destination: null,
+  route: null,
 };
 
 export const defaultMode = 'main';

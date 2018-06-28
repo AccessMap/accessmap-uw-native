@@ -12,6 +12,7 @@ import styles from '../../styles';
 import * as AppActions from '../../actions';
 import LayerSidewalks from './layer-sidewalks';
 import LayerCrossings from './layer-crossings';
+import LayerRoute from './layer-route';
 import Waypoint from '../../components/Waypoint';
 
 MapboxGL.setAccessToken(config.mapboxAccessToken);
@@ -26,6 +27,7 @@ class Map extends Component<Props> {
       poi,
       origin,
       destination,
+      route,
     } = this.props;
 
     return (
@@ -67,6 +69,12 @@ class Map extends Component<Props> {
               />
             )
           }
+          { route && (
+            <LayerRoute
+              route={route}
+            />
+            )
+          }
         </MapboxGL.MapView>
       </View>
     );
@@ -74,12 +82,14 @@ class Map extends Component<Props> {
 }
 
 const mapStateToProps = (state) => {
+  const routeResult = state.map.route;
   return {
     lng: state.map.lng,
     lat: state.map.lat,
     poi: state.map.poi,
     origin: state.map.origin,
     destination: state.map.destination,
+    route: routeResult && routeResult.routes && routeResult.routes[0],
   };
 };
 
