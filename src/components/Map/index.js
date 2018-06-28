@@ -22,7 +22,7 @@ export default class Map extends Component<Props> {
           zoomLevel={15}
           centerCoordinate={[-122.306411, 47.654572]}
           style={styles.map}
-          styleURL='mapbox://styles/mapbox/streets-v8'
+          styleURL='mapbox://styles/accessmap/cjglbmftk00202tqmpidtfxk3'
         >
           <LayerSidewalks />
           <LayerCrossings />
