@@ -34,6 +34,32 @@ export default class Map extends Component<Props> {
               }}
             />
           </MapboxGL.VectorSource>
+          <MapboxGL.VectorSource
+            id='crossings'
+            url='mapbox://accessmap.6iaj8pvi'
+          >
+            <MapboxGL.LineLayer
+              id='crossings'
+              sourceLayerID='crossings-cx5a30'
+              style={{
+                lineColor: 'red',
+                lineWidth: 3,
+              }}
+            />
+          </MapboxGL.VectorSource>
+          <MapboxGL.VectorSource
+            id='elevators'
+            url='mapbox://accessmap.07c7jabx'
+          >
+            <MapboxGL.LineLayer
+              id='elevators'
+              sourceLayerID='elevator_paths-0idixd'
+              style={{
+                lineColor: 'black',
+                lineWidth: 3,
+              }}
+            />
+          </MapboxGL.VectorSource>
         </MapboxGL.MapView>
       </View>
     );
