@@ -58,23 +58,26 @@ export default class App extends Component<Props> {
         { this.state.searchView ? null : <Map /> }
         <View style={styles.bottomview}>
           <SearchGeocoder ref={'searchGeocoder'} onFocus={this.startSearch} />
-          <View style={{ flexDirection: 'row', marginTop: 8 }}>
-            <Button
-              iconLeft
-              style={{ flex: 1 }}
-              onPress={() => console.log('press!')}
-            >
-              <Icon name='trending-up' />
-              <Text>Get Directions</Text>
-            </Button>
-            <Button
-              iconRight
-              style={{ flex: 1, marginLeft: 8 }}
-            >
-              <Icon name='settings' style={{marginLeft: 8}} />
-              <Text>Change Profile</Text>
-            </Button>
-          </View>
+          { this.state.searchView ?
+            null :
+            <View style={{ flexDirection: 'row', marginTop: 8 }}>
+              <Button
+                iconLeft
+                style={{ flex: 1 }}
+                onPress={() => console.log('press!')}
+              >
+                <Icon name='trending-up' />
+                <Text>Get Directions</Text>
+              </Button>
+              <Button
+                iconRight
+                style={{ flex: 1, marginLeft: 8 }}
+              >
+                <Icon name='settings' style={{marginLeft: 8}} />
+                <Text>Change Profile</Text>
+              </Button>
+            </View>
+          }
         </View>
       </Container>
     );

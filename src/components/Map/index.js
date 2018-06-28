@@ -19,7 +19,7 @@ export default class Map extends Component<Props> {
     return (
       <View style={styles.container}>
         <MapboxGL.MapView
-          zoomLevel={15}
+          zoomLevel={14}
           centerCoordinate={[-122.306411, 47.654572]}
           style={styles.map}
           styleURL='mapbox://styles/accessmap/cjglbmftk00202tqmpidtfxk3'
