@@ -22,6 +22,7 @@ class Map extends Component<Props> {
       actions,
       lng,
       lat,
+      poi,
     } = this.props;
 
     return (
@@ -32,13 +33,19 @@ class Map extends Component<Props> {
           style={styles.map}
           styleURL='mapbox://styles/accessmap/cjglbmftk00202tqmpidtfxk3'
           onPress={(e) => {
-            console.log(e);
             const coords = e.geometry.coordinates;
             actions.mapClick(coords[0], coords[1]);
           }}
         >
           <LayerSidewalks />
           <LayerCrossings />
+          { poi && (
+              <MapboxGL.PointAnnotation
+                id='poiAnnotation'
+                coordinate={[poi.lng, poi.lat]}
+              />
+            )
+          }
         </MapboxGL.MapView>
       </View>
     );
@@ -49,6 +56,7 @@ const mapStateToProps = (state) => {
   return {
     lng: state.map.lng,
     lat: state.map.lat,
+    poi: state.map.poi,
   };
 };
 
