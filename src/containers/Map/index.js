@@ -12,6 +12,7 @@ import styles from '../../styles';
 import * as AppActions from '../../actions';
 import LayerSidewalks from './layer-sidewalks';
 import LayerCrossings from './layer-crossings';
+import Waypoint from '../../components/Waypoint';
 
 MapboxGL.setAccessToken(config.mapboxAccessToken);
 
@@ -23,6 +24,8 @@ class Map extends Component<Props> {
       lng,
       lat,
       poi,
+      origin,
+      destination,
     } = this.props;
 
     return (
@@ -34,11 +37,29 @@ class Map extends Component<Props> {
           styleURL='mapbox://styles/accessmap/cjglbmftk00202tqmpidtfxk3'
           onPress={(e) => {
             const coords = e.geometry.coordinates;
-            actions.mapClick(coords[0], coords[1]);
+            actions.pressMap(coords[0], coords[1]);
           }}
         >
           <LayerSidewalks />
           <LayerCrossings />
+          { origin && (
+              <Waypoint
+                id='waypoint-origin'
+                key='waypoint-origin'
+                coordinate={[origin.lng, origin.lat]}
+                color='purple'
+              />
+            )
+          }
+          { destination && (
+              <Waypoint
+                id='waypoint-destination'
+                key='waypoint-destination'
+                coordinate={[destination.lng, destination.lat]}
+                color='orange'
+              />
+            )
+          }
           { poi && (
               <MapboxGL.PointAnnotation
                 id='poiAnnotation'
@@ -57,6 +78,8 @@ const mapStateToProps = (state) => {
     lng: state.map.lng,
     lat: state.map.lat,
     poi: state.map.poi,
+    origin: state.map.origin,
+    destination: state.map.destination,
   };
 };
 

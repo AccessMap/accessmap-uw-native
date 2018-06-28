@@ -24,7 +24,7 @@ import Map from '../containers/Map';
 import SearchGeocoder from '../components/SearchGeocoder';
 
 type Props = {};
-class MainView extends Component<Props> {
+class TripPlanningView extends Component<Props> {
   constructor() {
     super();
     this.state = {
@@ -64,50 +64,10 @@ class MainView extends Component<Props> {
             }
           />
         </Header>
-        { this.state.searchView ? null : <Map /> }
+        <Map />
         <View style={styles.bottomview}>
-          { poi ?
-            <Text>{`${poi.lat}, ${poi.lng}`}</Text> :
-            <SearchGeocoder ref={'searchGeocoder'} onFocus={this.startSearch} />
-          }
-          { this.state.searchView ?
-            null :
-            poi ?
-            <View style={{ flexDirection: 'row', marginTop: 8 }}>
-              <Button
-                iconLeft
-                style={{ flex: 1 }}
-                onPress={() => actions.pressDirectionsFromHere(poi)}
-              >
-                <Text>Directions from here</Text>
-              </Button>
-              <Button
-                iconRight
-                style={{ flex: 1, marginLeft: 8 }}
-                onPress={() => actions.pressDirectionsToHere(poi)}
-              >
-                <Text>Directions to here</Text>
-              </Button>
-            </View> :
-            <View style={{ flexDirection: 'row', marginTop: 8 }}>
-              <Button
-                iconLeft
-                style={{ flex: 1 }}
-                onPress={() => {}}
-              >
-                <Icon name='trending-up' />
-                <Text>Get Directions</Text>
-              </Button>
-              <Button
-                iconRight
-                style={{ flex: 1, marginLeft: 8 }}
-              >
-                <Icon name='settings' style={{marginLeft: 8}} />
-                <Text>Change Profile</Text>
-              </Button>
-            </View>
-
-          }
+          <SearchGeocoder />
+          <SearchGeocoder />
         </View>
       </Container>
     );
@@ -124,4 +84,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(AppActions, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainView);
+export default connect(mapStateToProps, mapDispatchToProps)(TripPlanningView);

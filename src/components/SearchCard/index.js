@@ -27,7 +27,7 @@ export default class SearchCard extends Component<Props> {
           <Button
             iconLeft
             style={{ flex: 1 }}
-            onPress={() => console.log('press!')}
+            onPress={() => {}}
           >
             <Icon name='trending-up' />
             <Text>Get Directions</Text>

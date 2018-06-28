@@ -1,19 +1,34 @@
 import React, { Component } from 'react';
-import { bindActionCreators, createStore } from 'redux';
-import { Provider, connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import rootReducer from './reducers';
+import * as AppActions from './actions';
+
 import MainView from './views/MainView';
-
-const store = createStore(rootReducer);
+import TripPlanningView from './views/TripPlanningView';
 
 type Props = {};
-export default class App extends Component<Props> {
+class App extends Component<Props> {
   render() {
-    return (
-      <Provider store={store}>
-        <MainView />
-      </Provider>
-    );
+    const {
+      mode,
+    } = this.props;
+
+    if (mode === 'planningtrip') {
+      return (<TripPlanningView />);
+    }
+    return (<MainView />);
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    mode: state.mode,
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(AppActions, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
