@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-
 import { AppRegistry } from 'react-native';
 
 import App from './src/App';
-import rootReducer from './src/reducers';
+import configureStore from './src/store';
 
-const store = createStore(rootReducer);
+const store = configureStore();
 
 
 type Props = {};
