@@ -17,9 +17,9 @@ export const ROUTE_FAILED = 'ROUTE_FAILED';
 //
 
 // Map interactions
-export const moveMap = (lng, lat) => ({
+export const moveMap = (lng, lat, zoom) => ({
   type: MOVE_MAP,
-  payload: { lng, lat },
+  payload: { lng, lat, zoom },
 });
 
 export const pressMap = (lng, lat) => ({

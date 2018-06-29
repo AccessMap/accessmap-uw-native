@@ -15,6 +15,7 @@ export default (state = defaults, action) => {
         ...state,
         lng: action.payload.lng,
         lat: action.payload.lat,
+        zoom: action.payload.zoom,
       }
     case PRESS_MAP:
       if (state.poi !== null) {

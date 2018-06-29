@@ -19,9 +19,9 @@ MapboxGL.setAccessToken(config.mapboxAccessToken);
 
 type Props = {};
 class Map extends Component<Props> {
-  scheduleMoveMap = (isAnimated, fn, lng, lat) => {
+  scheduleMoveMap = (isAnimated, fn, lng, lat, zoom) => {
     this.scheduledMoveMap = setTimeout(() => {
-      fn(lng, lat)
+      fn(lng, lat, zoom)
     }, 200);
     this.scheduleMoveMap.wasAnimated = isAnimated;
   }
@@ -37,6 +37,7 @@ class Map extends Component<Props> {
       actions,
       lng,
       lat,
+      zoom,
       poi,
       origin,
       destination,
@@ -46,11 +47,13 @@ class Map extends Component<Props> {
     return (
       <View style={styles.container}>
         <MapboxGL.MapView
-          zoomLevel={14}
+          zoomLevel={zoom}
           centerCoordinate={[lng, lat]}
           style={styles.map}
           styleURL='mapbox://styles/accessmap/cjglbmftk00202tqmpidtfxk3'
           showUserLocation
+          pitchEnabled={false}
+          rotateEnabled={false}
           onPress={(e) => {
             const coords = e.geometry.coordinates;
             actions.pressMap(coords[0], coords[1]);
@@ -67,8 +70,11 @@ class Map extends Component<Props> {
             // coordinates that gets cleared whenever the map is moving. This prevents
             // storing coordinates while the map is animating.
 
-            const [lng, lat] = e.geometry.coordinates;
-            this.scheduleMoveMap(e.properties.animated, actions.moveMap, lng, lat);
+            if (e.properties.isUserInteraction) {
+              const [lng, lat] = e.geometry.coordinates;
+              const zoom = e.properties.zoomLevel;
+              this.scheduleMoveMap(e.properties.animated, actions.moveMap, lng, lat, zoom);
+            }
           }}
         >
           <LayerSidewalks />
@@ -115,6 +121,7 @@ const mapStateToProps = (state) => {
   return {
     lng: state.map.lng,
     lat: state.map.lat,
+    zoom: state.map.zoom,
     poi: state.map.poi,
     origin: state.map.origin,
     destination: state.map.destination,
