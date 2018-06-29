@@ -21,6 +21,7 @@ import * as AppActions from '../actions';
 
 import DefaultHeader from '../components/DefaultHeader';
 import Map from '../containers/Map';
+import GeocoderList from '../components/GeocoderList';
 import SearchGeocoder from '../components/SearchGeocoder';
 
 type Props = {};
@@ -29,6 +30,7 @@ class MainView extends Component<Props> {
     super();
     this.state = {
       searchView: false,
+      geocoderResults: [],
     };
 
     this.startSearch = this.startSearch.bind(this);
@@ -67,11 +69,31 @@ class MainView extends Component<Props> {
         { this.state.searchView ? null : <Map /> }
         <View style={styles.bottomview}>
           { poi ?
-            <Text>{`${poi.lat}, ${poi.lng}`}</Text> :
-            <SearchGeocoder ref={'searchGeocoder'} onFocus={this.startSearch} />
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+             <Button
+                transparent
+                onPress={actions.clearPOI}
+              >
+               <Icon name='arrow-back' />
+              </Button>
+              <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
+                {poi.title || `${poi.lat.toFixed(6)}, ${poi.lng.toFixed(6)}`}
+              </Text>
+            </View> :
+            <SearchGeocoder
+              ref={'searchGeocoder'}
+              onFocus={this.startSearch}
+              onGeocode={(r) => this.setState({geocoderResults: r})}
+            />
           }
           { this.state.searchView ?
-            null :
+            <GeocoderList
+              results={this.state.geocoderResults}
+              onPressItem={(item) => {
+                this.endSearch();
+                actions.geocodedPOI(item.title, item.lng, item.lat);
+              }}
+            /> :
             poi ?
             <View style={{ flexDirection: 'row', marginTop: 8 }}>
               <Button

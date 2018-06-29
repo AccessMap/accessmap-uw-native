@@ -12,6 +12,14 @@ export const ROUTE_REQUESTED = 'ROUTE_REQUESTED';
 export const ROUTE_RECEIVED = 'ROUTE_RECEIVED';
 export const ROUTE_FAILED = 'ROUTE_FAILED';
 
+export const GEOCODED_POI = 'GEOCODED_POI';
+export const GEOCODED_ORIGIN = 'GEOCODED_ORIGIN';
+export const GEOCODED_DESTINATION = 'GEOCODED_DESTINATION';
+
+export const SET_MODE_MAIN = 'SET_MODE_MAIN';
+
+export const CLEAR_POI = 'CLEAR_POI';
+
 //
 // action creators
 //
@@ -98,3 +106,32 @@ const requestRoute = (origin, destination, dispatch) => {
     .then(json => dispatch(routeReceived(json)))
     .catch(error => dispatch(routeFailed(origin, destination, error.message)));
 };
+
+
+// Geocoder actions
+export const geocodedPOI = (title, lng, lat) => ({
+  type: GEOCODED_POI,
+  payload: { title, lng, lat },
+});
+
+export const geocodedOrigin = (title, lng, lat) => ({
+  type: GEOCODED_ORIGIN,
+  payload: { title, lng, lat },
+});
+
+
+export const geocodedDestination = (title, lng, lat) => ({
+  type: GEOCODED_DESTINATION,
+  payload: { title, lng, lat },
+});
+
+// Toggle modes
+export const setModeMain = () => ({
+  type: SET_MODE_MAIN,
+});
+
+// Waypoints
+export const clearPOI = () => ({
+  type: CLEAR_POI,
+});
+
