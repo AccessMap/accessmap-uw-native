@@ -52,8 +52,6 @@ class Map extends Component<Props> {
           centerCoordinate={[lng, lat]}
           style={styles.map}
           styleURL='mapbox://styles/accessmap/cjglbmftk00202tqmpidtfxk3'
-          userTrackingMode={MapboxGL.UserTrackingModes.Tracking}
-          showUserLocation
           pitchEnabled={false}
           rotateEnabled={false}
           onPress={(e) => {
