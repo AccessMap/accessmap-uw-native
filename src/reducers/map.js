@@ -1,4 +1,5 @@
 import {
+  MOVE_MAP,
   PRESS_MAP,
   PRESS_DIRECTIONS_FROM_HERE,
   PRESS_DIRECTIONS_TO_HERE,
@@ -9,6 +10,12 @@ import { defaultMap as defaults } from './defaults';
 
 export default (state = defaults, action) => {
   switch (action.type) {
+    case MOVE_MAP:
+      return {
+        ...state,
+        lng: action.payload.lng,
+        lat: action.payload.lat,
+      }
     case PRESS_MAP:
       if (state.poi !== null) {
         return {

@@ -1,4 +1,5 @@
 // action types
+export const MOVE_MAP = 'MOVE_MAP';
 export const PRESS_MAP = 'PRESS_MAP';
 
 export const PRESS_DIRECTIONS_FROM_HERE = 'PRESS_DIRECTIONS_FROM_HERE';
@@ -16,6 +17,11 @@ export const ROUTE_FAILED = 'ROUTE_FAILED';
 //
 
 // Map interactions
+export const moveMap = (lng, lat) => ({
+  type: MOVE_MAP,
+  payload: { lng, lat },
+});
+
 export const pressMap = (lng, lat) => ({
   type: PRESS_MAP,
   payload: { lng, lat },

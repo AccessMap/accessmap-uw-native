@@ -19,6 +19,19 @@ MapboxGL.setAccessToken(config.mapboxAccessToken);
 
 type Props = {};
 class Map extends Component<Props> {
+  scheduleMoveMap = (isAnimated, fn, lng, lat) => {
+    this.scheduledMoveMap = setTimeout(() => {
+      fn(lng, lat)
+    }, 200);
+    this.scheduleMoveMap.wasAnimated = isAnimated;
+  }
+
+  clearMoveMap = () => {
+    if (this.scheduledMoveMap && !this.scheduledMoveMap.wasAnimated) {
+      clearTimeout(this.scheduledMoveMap);
+    }
+  }
+
   render() {
     const {
       actions,
@@ -37,9 +50,25 @@ class Map extends Component<Props> {
           centerCoordinate={[lng, lat]}
           style={styles.map}
           styleURL='mapbox://styles/accessmap/cjglbmftk00202tqmpidtfxk3'
+          showUserLocation
           onPress={(e) => {
             const coords = e.geometry.coordinates;
             actions.pressMap(coords[0], coords[1]);
+          }}
+          onRegionIsChanging={this.clearMoveMap}
+          onRegionDidChange={(e) => {
+            // Sometimes this event gets thrown right in the middle of swipe (a la
+            // 'throwing' the map around to pan it), i.e. it fires multiple times for
+            // a single gesture. Because this event puts center coordinates in state
+            // and the state coordinates set the map, when the map stops panning it
+            // 'snaps' back to an intermediate position.
+            //
+            // To work around this, I'm setting a short timer on storing center
+            // coordinates that gets cleared whenever the map is moving. This prevents
+            // storing coordinates while the map is animating.
+
+            const [lng, lat] = e.geometry.coordinates;
+            this.scheduleMoveMap(e.properties.animated, actions.moveMap, lng, lat);
           }}
         >
           <LayerSidewalks />
