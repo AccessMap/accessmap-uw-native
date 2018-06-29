@@ -20,9 +20,10 @@ MapboxGL.setAccessToken(config.mapboxAccessToken);
 type Props = {};
 class Map extends Component<Props> {
   scheduleMoveMap = (isAnimated, fn, lng, lat, zoom) => {
+    this.scheduledMoveMap && clearTimeout(this.scheduledMoveMap);
     this.scheduledMoveMap = setTimeout(() => {
       fn(lng, lat, zoom)
-    }, 200);
+    }, 5);
     this.scheduleMoveMap.wasAnimated = isAnimated;
   }
 
@@ -51,6 +52,7 @@ class Map extends Component<Props> {
           centerCoordinate={[lng, lat]}
           style={styles.map}
           styleURL='mapbox://styles/accessmap/cjglbmftk00202tqmpidtfxk3'
+          userTrackingMode={MapboxGL.UserTrackingModes.Tracking}
           showUserLocation
           pitchEnabled={false}
           rotateEnabled={false}
@@ -58,6 +60,7 @@ class Map extends Component<Props> {
             const coords = e.geometry.coordinates;
             actions.pressMap(coords[0], coords[1]);
           }}
+          onRegionWillChange={this.clearMoveMap}
           onRegionIsChanging={this.clearMoveMap}
           onRegionDidChange={(e) => {
             // Sometimes this event gets thrown right in the middle of swipe (a la
