@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
@@ -12,6 +13,7 @@ export default class DefaultHeader extends Component<Props> {
       color,
       coordinate,
       id,
+      label,
     } = this.props;
 
     const styles = StyleSheet.create({
@@ -29,7 +31,10 @@ export default class DefaultHeader extends Component<Props> {
         borderRadius: 15,
         backgroundColor: color || 'orange',
         transform: [{ scale: 0.6 }],
-      }
+      },
+      annotationLabel: {
+        position: 'absolute',
+      },
     });
 
     return (
@@ -40,6 +45,7 @@ export default class DefaultHeader extends Component<Props> {
 
         <View style={styles.annotationContainer}>
           <View style={styles.annotationFill} />
+          <Text style={styles.annotationLabel}>{label}</Text>
         </View>
       </MapboxGL.PointAnnotation>
     );

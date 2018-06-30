@@ -85,7 +85,8 @@ class Map extends Component<Props> {
                 id='waypoint-origin'
                 key='waypoint-origin'
                 coordinate={[origin.lng, origin.lat]}
-                color='purple'
+                label='A'
+                color='plum'
               />
             )
           }
@@ -94,6 +95,7 @@ class Map extends Component<Props> {
                 id='waypoint-destination'
                 key='waypoint-destination'
                 coordinate={[destination.lng, destination.lat]}
+                label='B'
                 color='orange'
               />
             )
