@@ -13,8 +13,8 @@ export default class LayerCrossings extends Component<Props> {
           id='crossings'
           sourceLayerID='crossings-c1ktiy'
           style={{
-            lineColor: 'red',
-            lineWidth: 3,
+            lineColor: 'black',
+            lineWidth: 2.5,
           }}
         />
       </MapboxGL.VectorSource>
