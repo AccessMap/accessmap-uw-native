@@ -6,6 +6,7 @@ import * as AppActions from './actions';
 
 import MainView from './views/MainView';
 import TripPlanningView from './views/TripPlanningView';
+import DirectionsView from './views/DirectionsView';
 
 type Props = {};
 class App extends Component<Props> {
@@ -14,10 +15,14 @@ class App extends Component<Props> {
       mode,
     } = this.props;
 
-    if (mode === 'planningtrip') {
-      return (<TripPlanningView />);
+    switch (mode) {
+      case 'planningtrip':
+        return (<TripPlanningView />);
+      case 'directions':
+        return (<DirectionsView />);
+      default:
+        return (<MainView />);
     }
-    return (<MainView />);
   }
 }
 

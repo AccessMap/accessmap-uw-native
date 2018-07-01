@@ -8,6 +8,7 @@ import {
   GEOCODED_ORIGIN,
   GEOCODED_DESTINATION,
   CLEAR_POI,
+  DIRECTIONS_MODE_OFF,
 } from '../actions';
 
 import { defaultMap as defaults } from './defaults';
@@ -83,6 +84,13 @@ export default (state = defaults, action) => {
       return {
         ...state,
         poi: null,
+      }
+    case DIRECTIONS_MODE_OFF:
+      return {
+        ...state,
+        route: null,
+        origin: null,
+        destination: null,
       }
     default:
       return state;
