@@ -7,11 +7,11 @@ export default class LayerSidewalks extends Component<Props> {
     return (
       <MapboxGL.VectorSource
         id='sidewalks'
-        url='mapbox://accessmap.c3443oh6'
+        url='mapbox://accessmap.aii7dtpk'
       >
         <MapboxGL.LineLayer
           id='sidewalks'
-          sourceLayerID='sidewalks-afk40t'
+          sourceLayerID='sidewalks-9sqt5n'
           style={{
             lineColor: 'green',
             lineWidth: 3,

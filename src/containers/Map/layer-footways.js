@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 
 type Props = {};
-export default class LayerCrossings extends Component<Props> {
+export default class LayerFootways extends Component<Props> {
   render() {
     return (
       <MapboxGL.VectorSource
-        id='crossings'
-        url='mapbox://accessmap.3qpntf2g'
+        id='footways'
+        url='mapbox://accessmap.ctv6lc9a'
       >
         <MapboxGL.LineLayer
-          id='crossings'
-          sourceLayerID='crossings-c1ktiy'
+          id='footways'
+          sourceLayerID='footways-bbud6k'
           style={{
-            lineColor: 'red',
+            lineColor: 'green',
             lineWidth: 3,
           }}
         />

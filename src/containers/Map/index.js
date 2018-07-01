@@ -12,6 +12,10 @@ import styles from '../../styles';
 import * as AppActions from '../../actions';
 import LayerSidewalks from './layer-sidewalks';
 import LayerCrossings from './layer-crossings';
+import LayerFootways from './layer-footways';
+import LayerStairs from './layer-stairs';
+import LayerKerbs from './layer-kerbs';
+import LayerElevators from './layer-elevators';
 import LayerRoute from './layer-route';
 import Waypoint from '../../components/Waypoint';
 
@@ -79,7 +83,11 @@ class Map extends Component<Props> {
           }}
         >
           <LayerSidewalks />
+          <LayerFootways />
           <LayerCrossings />
+          <LayerStairs />
+          <LayerKerbs />
+          <LayerElevators />
           { origin && (
               <Waypoint
                 id='waypoint-origin'
