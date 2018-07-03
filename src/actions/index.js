@@ -56,7 +56,8 @@ export const pressDirectionsFromHere = (poi) => (dispatch, getState) => {
   });
 
   const { destination } = getState().map;
-  destination && requestRoute(poi, destination, dispatch);
+  const { profile } = getState();
+  destination && requestRoute(poi, destination, profile, dispatch);
 };
 
 export const pressDirectionsToHere = (poi) => (dispatch, getState) => {
@@ -66,7 +67,8 @@ export const pressDirectionsToHere = (poi) => (dispatch, getState) => {
   });
 
   const { origin } = getState().map;
-  origin && requestRoute(origin, poi, dispatch);
+  const { profile } = getState();
+  origin && requestRoute(origin, poi, profile, dispatch);
 };
 
 // Mode toggles
@@ -94,13 +96,24 @@ export const routeFailed = (origin, destination, error) => ({
   payload: { origin, destination, error },
 });
 
-const requestRoute = (origin, destination, dispatch) => {
+const requestRoute = (origin, destination, profile, dispatch) => {
   dispatch(routeRequested(origin, destination));
 
   const routeParams = {
     origin: `${origin.lat},${origin.lng}`,
     destination: `${destination.lat},${destination.lng}`,
+    incline_max: profile.uphill,
+    incline_min: profile.downhill,
   };
+
+  const avoid = [];
+  if (profile.avoidCurbs) {
+    avoid.push('curbs');
+  }
+  if (profile.avoidStairs) {
+    avoid.push('stairs');
+  }
+  routeParams.avoid = avoid.join('|');
 
   const esc = encodeURIComponent;
   const urlQuery = Object.keys(routeParams)
