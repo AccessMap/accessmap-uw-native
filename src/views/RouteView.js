@@ -25,7 +25,7 @@ class RouteView extends Component<Props> {
 
     const route0 = route.routes[0];
 
-    const duration = `${Math.round(route0.duration / 60, 0)} minutes`;
+    const duration = `Time estimate: ${Math.round(route0.duration / 60, 0)} minutes`;
 
     let totalLength = 0;
     let totalHeight = 0;
