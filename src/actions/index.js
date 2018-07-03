@@ -102,6 +102,20 @@ export const routeFailed = (origin, destination, error) => ({
   payload: { origin, destination, error },
 });
 
+const profileChangeReroute = (newParam, dispatch, getState) => {
+  const state = getState();
+
+  const { origin, destination, route } = state.map;
+
+  if (route.routes.length) {
+    // There's already a route - get a new one!
+    const { profile } = state;
+    const newProfile = { ...profile, ...newParam };
+    console.log(newProfile);
+    requestRoute(origin, destination, newProfile, dispatch);
+  };
+};
+
 const requestRoute = (origin, destination, profile, dispatch) => {
   dispatch(routeRequested(origin, destination));
 
@@ -182,9 +196,32 @@ export const clearPOI = () => ({
 
 
 // User profile
-export const setUphill = (incline) => ({ type: SET_UPHILL, payload: incline  });
-export const setDownhill = (incline) => ({ type: SET_DOWNHILL, payload: incline });
-export const setAvoidStairsOn = () => ({ type: SET_AVOID_STAIRS_ON });
-export const setAvoidStairsOff = () => ({ type: SET_AVOID_STAIRS_OFF });
-export const setAvoidCurbsOn = () => ({ type: SET_AVOID_CURBS_ON });
-export const setAvoidCurbsOff = () => ({ type: SET_AVOID_CURBS_OFF });
+export const setUphill = (incline) => (dispatch, getState) => {
+  dispatch({ type: SET_UPHILL, payload: incline });
+  profileChangeReroute({ uphill: incline }, dispatch, getState);
+};
+
+export const setDownhill = (incline) => (dispatch, getState) => {
+  dispatch({ type: SET_DOWNHILL, payload: incline });
+  profileChangeReroute({ downhill: incline }, dispatch, getState);
+};
+
+export const setAvoidStairsOn = () => (dispatch, getState) => {
+  dispatch({ type: SET_AVOID_STAIRS_ON });
+  profileChangeReroute({ avoidStairs: true }, dispatch, getState);
+};
+
+export const setAvoidStairsOff = () => (dispatch, getState) => {
+  dispatch({ type: SET_AVOID_STAIRS_OFF });
+  profileChangeReroute({ avoidStairs: false }, dispatch, getState);
+};
+
+export const setAvoidCurbsOn = () => (dispatch, getState) => {
+  dispatch({ type: SET_AVOID_CURBS_ON });
+  profileChangeReroute({ avoidCurbs: true }, dispatch, getState);
+};
+
+export const setAvoidCurbsOff = () => (dispatch, getState) => {
+  dispatch({ type: SET_AVOID_CURBS_OFF });
+  profileChangeReroute({ avoidCurbs: false }, dispatch, getState);
+};
