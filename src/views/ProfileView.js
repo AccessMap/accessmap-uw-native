@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import {
+  Slider,
   View,
 } from 'react-native';
 import {
@@ -39,6 +40,30 @@ class RouteView extends Component<Props> {
          <Icon name='arrow-back' />
         </Button>
         <Content>
+          <ListItem>
+            <Body>
+              <Slider
+                minimumValue={0.03}
+                maximumValue={0.15}
+                step={0.005}
+                value={uphill}
+                onValueChange={(value) => actions.setUphill(value)}
+              />
+              <Text>{`Maximum uphill incline: ${(uphill * 100).toFixed(1)}`}%</Text>
+            </Body>
+          </ListItem>
+          <ListItem>
+            <Body>
+              <Slider
+                minimumValue={0.03}
+                maximumValue={0.15}
+                step={0.005}
+                value={-downhill}
+                onValueChange={(value) => actions.setDownhill(-value)}
+              />
+              <Text>{`Maximum downhill incline: ${(downhill * 100).toFixed(1)}%`}</Text>
+            </Body>
+          </ListItem>
           <ListItem>
             <CheckBox
               checked={avoidStairs}

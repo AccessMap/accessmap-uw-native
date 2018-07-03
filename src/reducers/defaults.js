@@ -18,8 +18,8 @@ export const defaultStatuses = {
 
 export const defaultProfile = {
   ideal: -0.01,
-  uphill: 0.0833,
-  downhill: 0.0833,
+  uphill: 0.085,
+  downhill: 0.085,
   avoidStairs: true,
   avoidCurbs: true,
 };
