@@ -8,9 +8,22 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  mapContainer: {
+    flex: 1,
+    width: '100%',
+  },
   map: {
     flex: 1,
     width: '100%',
+  },
+  mapButtons: {
+    flex: 1,
+    flexDirection: 'column',
+    position: 'absolute',
+    marginBottom: 8,
+    marginRight: 8,
+    bottom: 0,
+    right: 0,
   },
   bottomview: {
     height: 160,

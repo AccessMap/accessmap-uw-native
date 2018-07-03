@@ -69,7 +69,7 @@ class SearchOverlay extends Component<Props> {
         );
       } else {
         content = (
-          <View style={{ alignItems: 'center', justify: 'center' }}>
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             <Text>No result found yet! Try more terms</Text>
           </View>
         );

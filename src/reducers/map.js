@@ -1,6 +1,8 @@
 import {
   MOVE_MAP,
   PRESS_MAP,
+  INCREMENT_ZOOM,
+  DECREMENT_ZOOM,
   PRESS_DIRECTIONS_FROM_HERE,
   PRESS_DIRECTIONS_TO_HERE,
   ROUTE_RECEIVED,
@@ -35,6 +37,16 @@ export default (state = defaults, action) => {
           lng: action.payload.lng,
           lat: action.payload.lat,
         },
+      };
+    case INCREMENT_ZOOM:
+      return {
+        ...state,
+        zoom: state.zoom + 1,
+      };
+    case DECREMENT_ZOOM:
+      return {
+        ...state,
+        zoom: state.zoom - 1,
       };
     case PRESS_DIRECTIONS_FROM_HERE:
       return {

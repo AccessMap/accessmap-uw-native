@@ -13,6 +13,7 @@ import * as AppActions from './actions';
 import styles from './styles';
 
 import Map from './containers/Map';
+import MapButtons from './containers/MapButtons';
 import DefaultHeader from './components/DefaultHeader';
 
 import MainView from './views/MainView';
@@ -48,7 +49,12 @@ class App extends Component<Props> {
         <Header>
           <DefaultHeader />
         </Header>
-        <Map />
+        <View style={styles.mapContainer}>
+          <Map style={styles.map} />
+          <View style={styles.mapButtons}>
+            <MapButtons />
+          </View>
+        </View>
         <View style={styles.bottomview}>
           {bottomContent}
         </View>

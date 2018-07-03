@@ -1,6 +1,8 @@
 // action types
 export const MOVE_MAP = 'MOVE_MAP';
 export const PRESS_MAP = 'PRESS_MAP';
+export const INCREMENT_ZOOM = 'INCREMENT_ZOOM';
+export const DECREMENT_ZOOM = 'DECREMENT_ZOOM';
 
 export const PRESS_DIRECTIONS_FROM_HERE = 'PRESS_DIRECTIONS_FROM_HERE';
 export const PRESS_DIRECTIONS_TO_HERE = 'PRESS_DIRECTIONS_TO_HERE';
@@ -47,6 +49,10 @@ export const pressMap = (lng, lat) => ({
   type: PRESS_MAP,
   payload: { lng, lat },
 });
+
+export const incrementZoom = () => ({ type: INCREMENT_ZOOM });
+
+export const decrementZoom = () => ({ type: DECREMENT_ZOOM });
 
 // Main view button presses
 export const pressDirectionsFromHere = (poi) => (dispatch, getState) => {
