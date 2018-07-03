@@ -46,14 +46,27 @@ class RouteView extends Component<Props> {
 
     return (
       <View style={styles.bottomview}>
-         <Button
-           transparent
-           onPress={actions.directionsModeOff}
-         >
-          <Icon name='arrow-back' />
-         </Button>
+        <View style={{ flexDirection: 'row', marginTop: 8 }}>
+          <Button
+            transparent
+            onPress={actions.directionsModeOff}
+          >
+           <Icon name='arrow-back' />
+          </Button>
+          <Button
+            iconRight
+            block
+            style={{ flex: 1 }}
+            onPress={actions.setModeProfile}
+          >
+            <Icon name='settings' style={{marginLeft: 8}} />
+            <Text>Change Profile</Text>
+          </Button>
+        </View>
+        <View style={{ padding: 8 }}>
          <Text>{duration}</Text>
          <Text>{eChange}</Text>
+        </View>
       </View>
     );
   }

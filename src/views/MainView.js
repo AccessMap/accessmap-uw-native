@@ -55,7 +55,7 @@ class MainView extends Component<Props> {
             <Text>Change Profile</Text>
           </Button>
         </View>
-    </React.Fragment>
+      </React.Fragment>
     );
   }
 }
