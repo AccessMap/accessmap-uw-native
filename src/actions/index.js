@@ -107,7 +107,7 @@ const profileChangeReroute = (newParam, dispatch, getState) => {
 
   const { origin, destination, route } = state.map;
 
-  if (route.routes.length) {
+  if (route && route.routes.length) {
     // There's already a route - get a new one!
     const { profile } = state;
     const newProfile = { ...profile, ...newParam };
