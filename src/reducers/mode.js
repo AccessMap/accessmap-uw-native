@@ -5,6 +5,7 @@ import {
   GEOCODED_ORIGIN,
   GEOCODED_DESTINATION,
   SET_MODE_MAIN,
+  SET_MODE_PROFILE,
 } from '../actions';
 
 import { defaultMode as defaults } from './defaults';
@@ -13,6 +14,8 @@ export default (state = defaults, action) => {
   switch (action.type) {
     case SET_MODE_MAIN:
       return 'main';
+    case SET_MODE_PROFILE:
+      return 'profile';
     case DIRECTIONS_MODE_ON:
       return 'tripplanning';
     case DIRECTIONS_MODE_OFF:

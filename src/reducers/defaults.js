@@ -15,3 +15,11 @@ export const defaultOverlay = null;
 export const defaultStatuses = {
   geocoding: false,
 };
+
+export const defaultProfile = {
+  ideal: -0.01,
+  uphill: 0.0833,
+  downhill: 0.0833,
+  avoidStairs: true,
+  avoidCurbs: true,
+};

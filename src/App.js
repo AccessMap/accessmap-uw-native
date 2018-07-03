@@ -17,6 +17,7 @@ import DefaultHeader from './components/DefaultHeader';
 
 import MainView from './views/MainView';
 import POIView from './views/POIView';
+import ProfileView from './views/ProfileView';
 import RouteView from './views/RouteView';
 
 import SearchOverlay from './overlays/SearchOverlay';
@@ -38,6 +39,9 @@ class App extends Component<Props> {
     if (poi) {
       bottomContent = (<POIView />);
     }
+    if (mode == 'profile') {
+      bottomContent = (<ProfileView />);
+    };
 
     return (
       <Container>

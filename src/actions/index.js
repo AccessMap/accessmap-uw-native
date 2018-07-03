@@ -19,11 +19,19 @@ export const GEOCODED_ORIGIN = 'GEOCODED_ORIGIN';
 export const GEOCODED_DESTINATION = 'GEOCODED_DESTINATION';
 
 export const SET_MODE_MAIN = 'SET_MODE_MAIN';
+export const SET_MODE_PROFILE = 'SET_MODE_PROFILE';
 
 export const OVERLAY_OFF = 'OVERLAY_OFF';
 export const OVERLAY_SEARCH = 'OVERLAY_SEARCH';
 
 export const CLEAR_POI = 'CLEAR_POI';
+
+export const SET_UPHILL = 'SET_UPHILL';
+export const SET_DOWNHILL = 'SET_DOWNHILL';
+export const SET_AVOID_STAIRS_ON = 'SET_AVOID_STAIRS_ON';
+export const SET_AVOID_STAIRS_OFF = 'SET_AVOID_STAIRS_OFF';
+export const SET_AVOID_CURBS_ON = 'SET_AVOID_CURBS_ON';
+export const SET_AVOID_CURBS_OFF = 'SET_AVOID_CURBS_OFF';
 
 //
 // action creators
@@ -135,9 +143,9 @@ export const geocodedDestination = (title, lng, lat) => ({
 });
 
 // Toggle modes
-export const setModeMain = () => ({
-  type: SET_MODE_MAIN,
-});
+export const setModeMain = () => ({ type: SET_MODE_MAIN });
+
+export const setModeProfile = () => ({ type: SET_MODE_PROFILE });
 
 // Toggle overlays
 export const overlayOff = () => ({
@@ -153,3 +161,11 @@ export const clearPOI = () => ({
   type: CLEAR_POI,
 });
 
+
+// User profile
+export const setUphill = (incline) => ({ type: SET_UPHILL, payload: incline  });
+export const setDownhill = (incline) => ({ type: SET_DOWNHILL, payload: incline });
+export const setAvoidStairsOn = () => ({ type: SET_AVOID_STAIRS_ON });
+export const setAvoidStairsOff = () => ({ type: SET_AVOID_STAIRS_OFF });
+export const setAvoidCurbsOn = () => ({ type: SET_AVOID_CURBS_ON });
+export const setAvoidCurbsOff = () => ({ type: SET_AVOID_CURBS_OFF });

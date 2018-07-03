@@ -49,6 +49,7 @@ class MainView extends Component<Props> {
             iconRight
             block
             style={{ flex: 1 }}
+            onPress={actions.setModeProfile}
           >
             <Icon name='settings' style={{marginLeft: 8}} />
             <Text>Change Profile</Text>
