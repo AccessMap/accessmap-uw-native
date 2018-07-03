@@ -3,73 +3,66 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import {
-  TextInput,
   View,
 } from 'react-native';
 import {
   Button,
-  Container,
-  Header,
   Icon,
   Input,
-  Item,
   Text,
 } from 'native-base';
 
 import styles from '../styles';
 import * as AppActions from '../actions';
 
-import DefaultHeader from '../components/DefaultHeader';
-import Map from '../containers/Map';
-import GeocoderList from '../components/GeocoderList';
-import SearchGeocoder from '../components/SearchGeocoder';
-
 type Props = {};
-class MainView extends Component<Props> {
+class POIView extends Component<Props> {
   render() {
     const {
       actions,
+      poi,
     } = this.props;
 
     return (
       <React.Fragment>
-        <View style={{ flexDirection: 'row', marginTop: 8 }}>
-          <Button
-            iconLeft
-            style={{ flex: 1 }}
-            onPress={actions.overlaySearch}
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+         <Button
+            transparent
+            onPress={actions.overlayOff}
           >
-            <Icon name='search' />
-            <Text>Search for Address</Text>
+           <Icon name='arrow-back' />
           </Button>
+          <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
+            {poi.title || `${poi.lat.toFixed(6)}, ${poi.lng.toFixed(6)}`}
+          </Text>
         </View>
         <View style={{ flexDirection: 'row', marginTop: 8 }}>
           <Button
             iconLeft
             style={{ flex: 1 }}
-            onPress={() => {}}
+            onPress={() => actions.pressDirectionsFromHere(poi)}
           >
-            <Icon name='trending-up' />
-            <Text>Get Directions</Text>
+            <Text>Directions from here</Text>
           </Button>
           <Button
             iconRight
             style={{ flex: 1, marginLeft: 8 }}
+            onPress={() => actions.pressDirectionsToHere(poi)}
           >
-            <Icon name='settings' style={{marginLeft: 8}} />
-            <Text>Change Profile</Text>
+            <Text>Directions to here</Text>
           </Button>
         </View>
-    </React.Fragment>
+      </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
+  poi: state.map.poi,
 });
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(AppActions, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainView);
+export default connect(mapStateToProps, mapDispatchToProps)(POIView);

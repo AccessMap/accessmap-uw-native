@@ -40,8 +40,6 @@ class Map extends Component<Props> {
   render() {
     const {
       actions,
-      lng,
-      lat,
       zoom,
       poi,
       origin,
@@ -53,7 +51,7 @@ class Map extends Component<Props> {
       <View style={styles.container}>
         <MapboxGL.MapView
           zoomLevel={zoom}
-          centerCoordinate={[lng, lat]}
+          centerCoordinate={[-122.306411, 47.654572]}
           style={styles.map}
           styleURL='mapbox://styles/accessmap/cjglbmftk00202tqmpidtfxk3'
           pitchEnabled={false}
@@ -130,8 +128,6 @@ class Map extends Component<Props> {
 const mapStateToProps = (state) => {
   const routeResult = state.map.route;
   return {
-    lng: state.map.lng,
-    lat: state.map.lat,
     zoom: state.map.zoom,
     poi: state.map.poi,
     origin: state.map.origin,

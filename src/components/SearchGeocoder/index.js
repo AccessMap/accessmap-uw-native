@@ -23,11 +23,13 @@ export default class SearchGeocoder extends Component<Props> {
     const {
       onFocus,
       onGeocode,
+      ...rest,
     } = this.props;
 
     return (
       <Item rounded>
         <Input
+          {...rest}
           ref={c => this._input = c}
           placeholder='Search address'
           onFocus={onFocus}

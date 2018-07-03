@@ -18,6 +18,9 @@ export const GEOCODED_DESTINATION = 'GEOCODED_DESTINATION';
 
 export const SET_MODE_MAIN = 'SET_MODE_MAIN';
 
+export const OVERLAY_OFF = 'OVERLAY_OFF';
+export const OVERLAY_SEARCH = 'OVERLAY_SEARCH';
+
 export const CLEAR_POI = 'CLEAR_POI';
 
 //
@@ -94,7 +97,7 @@ const requestRoute = (origin, destination, dispatch) => {
     .map(k => `${esc(k)}=${esc(routeParams[k])}`)
     .join('&');
 
-  const query = `https://staging.accessmap.io/api/v2/route.json?${urlQuery}`;
+  const query = `https://uw.accessmap.io/api/v2/route.json?${urlQuery}`;
 
   fetch(query)
     .then((response) => {
@@ -128,6 +131,15 @@ export const geocodedDestination = (title, lng, lat) => ({
 // Toggle modes
 export const setModeMain = () => ({
   type: SET_MODE_MAIN,
+});
+
+// Toggle overlays
+export const overlayOff = () => ({
+  type: OVERLAY_OFF,
+});
+
+export const overlaySearch = () => ({
+  type: OVERLAY_SEARCH,
 });
 
 // Waypoints
