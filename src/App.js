@@ -17,8 +17,7 @@ import DefaultHeader from './components/DefaultHeader';
 
 import MainView from './views/MainView';
 import POIView from './views/POIView';
-import TripPlanningView from './views/TripPlanningView';
-import DirectionsView from './views/DirectionsView';
+import RouteView from './views/RouteView';
 
 import SearchOverlay from './overlays/SearchOverlay';
 
@@ -29,16 +28,12 @@ class App extends Component<Props> {
       mode,
       overlay,
       poi,
+      routeResult,
     } = this.props;
 
-    let bottomContent;
-    switch (mode) {
-      case 'planningtrip':
-        bottomContent = (<TripPlanningView />);
-      case 'directions':
-        bottomContent = (<DirectionsView />);
-      default:
-        bottomContent = (<MainView />);
+    let bottomContent = (<MainView />);
+    if (routeResult && routeResult.routes.length) {
+      bottomContent = (<RouteView />);
     }
     if (poi) {
       bottomContent = (<POIView />);
@@ -64,6 +59,7 @@ const mapStateToProps = (state) => {
     mode: state.mode,
     overlay: state.overlay,
     poi: state.map.poi,
+    routeResult: state.map.route,
   };
 };
 
