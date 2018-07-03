@@ -16,6 +16,9 @@ import DefaultHeader from '../components/DefaultHeader';
 import GeocoderList from '../components/GeocoderList';
 import SearchGeocoder from '../components/SearchGeocoder';
 
+
+const BOUNDS = [-122.320741, 47.643214, -122.290601, 47.666229];
+
 type Props = {};
 class SearchOverlay extends Component<Props> {
   constructor() {
@@ -23,6 +26,17 @@ class SearchOverlay extends Component<Props> {
     this.state = {
       geocoderResults: [],
     };
+  }
+
+  handleGeocoder = (results) => {
+    const inBounds = results.filter(d => {
+      if (d.position.lng < BOUNDS[0]) return false;
+      if (d.position.lng > BOUNDS[2]) return false;
+      if (d.position.lat < BOUNDS[1]) return false;
+      if (d.position.lat > BOUNDS[3]) return false;
+      return true;
+    });
+    this.setState({geocoderResults: inBounds})
   }
 
   render() {
@@ -46,7 +60,7 @@ class SearchOverlay extends Component<Props> {
         </Header>
         <SearchGeocoder
           ref={'searchGeocoder'}
-          onGeocode={(r) => this.setState({geocoderResults: r})}
+          onGeocode={this.handleGeocoder}
           autoFocus
         />
         <GeocoderList
