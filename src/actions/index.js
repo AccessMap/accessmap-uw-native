@@ -12,6 +12,8 @@ export const ROUTE_REQUESTED = 'ROUTE_REQUESTED';
 export const ROUTE_RECEIVED = 'ROUTE_RECEIVED';
 export const ROUTE_FAILED = 'ROUTE_FAILED';
 
+export const GEOCODING = 'GEOCODING';
+export const GEOCODING_ENDED = 'GEOCODING_ENDED';
 export const GEOCODED_POI = 'GEOCODED_POI';
 export const GEOCODED_ORIGIN = 'GEOCODED_ORIGIN';
 export const GEOCODED_DESTINATION = 'GEOCODED_DESTINATION';
@@ -112,6 +114,10 @@ const requestRoute = (origin, destination, dispatch) => {
 
 
 // Geocoder actions
+export const geocoding = () => ({ type: GEOCODING });
+
+export const geocodingEnded = () => ({ type: GEOCODING_ENDED });
+
 export const geocodedPOI = (title, lng, lat) => ({
   type: GEOCODED_POI,
   payload: { title, lng, lat },

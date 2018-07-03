@@ -11,3 +11,7 @@ export const defaultMap = {
 export const defaultMode = 'main';
 
 export const defaultOverlay = null;
+
+export const defaultStatuses = {
+  geocoding: false,
+};

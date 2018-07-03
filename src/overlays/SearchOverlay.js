@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { View } from 'react-native';
 import {
   Button,
   Container,
   Header,
   Icon,
+  Spinner,
+  Text,
 } from 'native-base';
 
 import styles from '../styles';
@@ -29,6 +32,7 @@ class SearchOverlay extends Component<Props> {
   }
 
   handleGeocoder = (results) => {
+    this.props.actions.geocodingEnded();
     const inBounds = results.filter(d => {
       if (d.position.lng < BOUNDS[0]) return false;
       if (d.position.lng > BOUNDS[2]) return false;
@@ -42,7 +46,35 @@ class SearchOverlay extends Component<Props> {
   render() {
     const {
       actions,
+      geocoding,
     } = this.props;
+
+    const {
+      geocoderResults,
+    } = this.state;
+
+    let content;
+    if (geocoding) {
+      content = (<Spinner />);
+    } else {
+      if (geocoderResults.length) {
+        content = (
+          <GeocoderList
+            results={geocoderResults}
+            onPressItem={(item) => {
+              actions.overlayOff();
+              actions.geocodedPOI(item.title, item.lng, item.lat);
+            }}
+          />
+        );
+      } else {
+        content = (
+          <View style={{ alignItems: 'center', justify: 'center' }}>
+            <Text>Enter a search term until a result is found</Text>
+          </View>
+        );
+      }
+    }
 
     return (
       <Container style={styles.temporary}>
@@ -60,22 +92,18 @@ class SearchOverlay extends Component<Props> {
         </Header>
         <SearchGeocoder
           ref={'searchGeocoder'}
-          onGeocode={this.handleGeocoder}
           autoFocus
+          onGeocode={this.handleGeocoder}
+          onChange={actions.geocoding}
         />
-        <GeocoderList
-          results={this.state.geocoderResults}
-          onPressItem={(item) => {
-            actions.overlayOff();
-            actions.geocodedPOI(item.title, item.lng, item.lat);
-          }}
-        />
+        {content}
       </Container>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
+  geocoding: state.statuses.geocoding,
 });
 
 const mapDispatchToProps = dispatch => ({

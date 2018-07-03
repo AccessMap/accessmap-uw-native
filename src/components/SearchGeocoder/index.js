@@ -7,8 +7,9 @@ import Geocoder from 'react-native-geocoder';
 
 type Props = {};
 export default class SearchGeocoder extends Component<Props> {
-  handleChange = (text, cb) => {
+  handleChange = (text, cb, onChange) => {
     if (!cb || !text.length) return;
+    onChange(text)
     Geocoder.geocodeAddress(text)
       .then((res) => {
         cb(res);
@@ -23,6 +24,7 @@ export default class SearchGeocoder extends Component<Props> {
     const {
       onFocus,
       onGeocode,
+      onChange,
       ...rest,
     } = this.props;
 
@@ -33,7 +35,7 @@ export default class SearchGeocoder extends Component<Props> {
           ref={c => this._input = c}
           placeholder='Search address'
           onFocus={onFocus}
-          onChangeText={(t) => this.handleChange(t, onGeocode)}
+          onChangeText={(t) => this.handleChange(t, onGeocode, onChange)}
         />
       </Item>
     );

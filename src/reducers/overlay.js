@@ -3,7 +3,7 @@ import {
   OVERLAY_SEARCH,
 } from '../actions';
 
-import { defaultMode as defaults } from './defaults';
+import { defaultOverlay as defaults } from './defaults';
 
 export default (state = defaults, action) => {
   switch (action.type) {

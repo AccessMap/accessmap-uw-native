@@ -28,7 +28,7 @@ class POIView extends Component<Props> {
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
          <Button
             transparent
-            onPress={actions.overlayOff}
+            onPress={actions.clearPOI}
           >
            <Icon name='arrow-back' />
           </Button>
