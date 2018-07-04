@@ -1,4 +1,4 @@
-package com.accessmap;
+package com.accessmapuw;
 
 import android.app.Application;
 

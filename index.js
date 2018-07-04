@@ -19,4 +19,4 @@ class Index extends Component<Props> {
   }
 }
 
-AppRegistry.registerComponent('AccessMap', () => Index);
+AppRegistry.registerComponent('AccessMap UW', () => Index);
