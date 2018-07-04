@@ -78,7 +78,7 @@ class SearchOverlay extends Component<Props> {
 
     return (
       <Container style={styles.temporary}>
-        <Header>
+        <Header style={{ marginBottom: 8 }}>
           <DefaultHeader
             left={(
               <Button
