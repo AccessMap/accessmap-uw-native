@@ -17,6 +17,7 @@ export default class LayerStairs extends Component<Props> {
             lineWidth: 3,
             lineDasharray: [0.2, 0.2]
           }}
+          aboveLayerID='bridge-street'
         />
       </MapboxGL.VectorSource>
     );

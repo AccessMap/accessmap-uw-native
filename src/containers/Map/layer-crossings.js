@@ -16,6 +16,7 @@ export default class LayerCrossings extends Component<Props> {
             lineColor: 'black',
             lineWidth: 2.5,
           }}
+          aboveLayerID='bridge-street'
         />
       </MapboxGL.VectorSource>
     );

@@ -16,6 +16,7 @@ export default class LayerElevators extends Component<Props> {
             circleColor: 'blue',
             circleRadius: 3,
           }}
+          aboveLayerID='bridge-street'
         />
       </MapboxGL.VectorSource>
     );

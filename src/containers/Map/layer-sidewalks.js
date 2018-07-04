@@ -13,14 +13,16 @@ export default class LayerSidewalks extends Component<Props> {
         url='mapbox://accessmap.aii7dtpk'
       >
         <MapboxGL.LineLayer
-          id='sidewalks-outline'
-          sourceLayerID='sidewalks-9sqt5n'
-          style={styles.sidewalksOutline}
-        />
-        <MapboxGL.LineLayer
           id='sidewalks'
           sourceLayerID='sidewalks-9sqt5n'
           style={styles.sidewalks}
+          aboveLayerID='bridge-street'
+        />
+        <MapboxGL.LineLayer
+          id='sidewalks-outline'
+          sourceLayerID='sidewalks-9sqt5n'
+          style={styles.sidewalksOutline}
+          aboveLayerID='bridge-street'
         />
       </MapboxGL.VectorSource>
     );

@@ -12,14 +12,16 @@ export default class LayerFootways extends Component<Props> {
         url='mapbox://accessmap.ctv6lc9a'
       >
         <MapboxGL.LineLayer
-          id='footways-outline'
-          sourceLayerID='footways-bbud6k'
-          style={styles.sidewalksOutline}
-        />
-        <MapboxGL.LineLayer
           id='footways'
           sourceLayerID='footways-bbud6k'
           style={styles.sidewalks}
+          aboveLayerID='bridge-street'
+        />
+        <MapboxGL.LineLayer
+          id='footways-outline'
+          sourceLayerID='footways-bbud6k'
+          style={styles.sidewalksOutline}
+          aboveLayerID='bridge-street'
         />
       </MapboxGL.VectorSource>
     );

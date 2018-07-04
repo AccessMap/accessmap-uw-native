@@ -30,6 +30,7 @@ export default class LayerKerbs extends Component<Props> {
             circleColor: 'green',
             circleRadius: 3,
           }}
+          aboveLayerID='bridge-street'
         />
       </MapboxGL.VectorSource>
     );
