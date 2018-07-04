@@ -37,11 +37,20 @@ class MainView extends Component<Props> {
           <Button
             iconLeft
             block
-            style={{ flex: 1 }}
+            style={{ flex: 1, marginRight: 4 }}
             onPress={actions.overlaySearch}
           >
             <Icon name='search' />
             <Text>Search for Address</Text>
+          </Button>
+          <Button
+            iconLeft
+            block
+            style={{ flex: 1, marginLeft: 4 }}
+            onPress={actions.overlayPOIs}
+          >
+            <Icon name='bonfire' />
+            <Text>Popular places</Text>
           </Button>
         </View>
         <View style={{ flexDirection: 'row', marginTop: 8 }}>

@@ -9,6 +9,7 @@ import {
   GEOCODED_POI,
   GEOCODED_ORIGIN,
   GEOCODED_DESTINATION,
+  SET_POI,
   CLEAR_POI,
   DIRECTIONS_MODE_OFF,
 } from '../actions';
@@ -66,6 +67,7 @@ export default (state = defaults, action) => {
         route: action.payload,
       }
     case GEOCODED_POI:
+    case SET_POI:
       return {
         ...state,
         poi: {

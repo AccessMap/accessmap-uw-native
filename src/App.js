@@ -22,6 +22,7 @@ import ProfileView from './views/ProfileView';
 import RouteView from './views/RouteView';
 
 import SearchOverlay from './overlays/SearchOverlay';
+import POIsOverlay from './overlays/POIsOverlay';
 
 type Props = {};
 class App extends Component<Props> {
@@ -59,6 +60,7 @@ class App extends Component<Props> {
           {bottomContent}
         </View>
         { overlay == 'search' && <SearchOverlay />}
+        { overlay == 'pois' && <POIsOverlay />}
       </Container>
     );
   }

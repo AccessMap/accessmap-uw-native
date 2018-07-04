@@ -25,7 +25,9 @@ export const SET_MODE_PROFILE = 'SET_MODE_PROFILE';
 
 export const OVERLAY_OFF = 'OVERLAY_OFF';
 export const OVERLAY_SEARCH = 'OVERLAY_SEARCH';
+export const OVERLAY_POIS = 'OVERLAY_POIS';
 
+export const SET_POI = 'SET_POI';
 export const CLEAR_POI = 'CLEAR_POI';
 
 export const SET_PROFILE_PARAMS = 'SET_PROFILE_PARAMS';
@@ -180,15 +182,18 @@ export const setModeMain = () => ({ type: SET_MODE_MAIN });
 export const setModeProfile = () => ({ type: SET_MODE_PROFILE });
 
 // Toggle overlays
-export const overlayOff = () => ({
-  type: OVERLAY_OFF,
-});
+export const overlayOff = () => ({ type: OVERLAY_OFF });
 
-export const overlaySearch = () => ({
-  type: OVERLAY_SEARCH,
-});
+export const overlaySearch = () => ({ type: OVERLAY_SEARCH });
+
+export const overlayPOIs = () => ({ type: OVERLAY_POIS });
 
 // Waypoints
+export const setPOI = (title, lng, lat) => ({
+  type: SET_POI,
+  payload: { title, lng, lat },
+});
+
 export const clearPOI = () => ({
   type: CLEAR_POI,
 });
