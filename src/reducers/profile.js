@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import {
+  SET_PROFILE_PARAMS,
   SET_UPHILL,
   SET_DOWNHILL,
   SET_IDEAL,
@@ -13,6 +14,8 @@ import { defaultProfile as defaults } from './defaults';
 
 export default (state = defaults, action) => {
   switch (action.type) {
+    case SET_PROFILE_PARAMS:
+      return { ...state, ...action.payload };
     case SET_UPHILL:
       return { ...state, uphill: action.payload };
     case SET_DOWNHILL:

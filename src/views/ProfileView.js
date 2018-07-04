@@ -21,24 +21,47 @@ import * as AppActions from '../actions';
 
 type Props = {};
 class RouteView extends Component<Props> {
+  constructor(props) {
+    super()
+    this.state = {
+      uphill: props.uphill,
+      downhill: props.downhill,
+      avoidStairs: props.avoidStairs,
+      avoidCurbs: props.avoidCurbs,
+    };
+  }
+
+  setUphill = (incline) => { this.setState({ uphill: incline }) };
+  setDownhill = (incline) => { this.setState({ downhill: incline }) };
+  setAvoidStairs = (value) => { this.setState({ avoidStairs: value }) };
+  setAvoidCurbs = (value) => { this.setState({ avoidCurbs: value }) };
+  saveParams = () => { this.props.actions.setProfileParams({ ...this.state }) };
+
   render() {
     const {
       actions,
+    } = this.props;
+
+    const {
       uphill,
       downhill,
       avoidStairs,
       avoidCurbs,
-      fromView,
-    } = this.props;
+    } = this.state;
 
     return (
       <View style={styles.bottomview}>
-        <Button
-          transparent
-          onPress={actions.setModeMain}
-        >
-         <Icon name='arrow-back' />
-        </Button>
+        <View style={{ flexDirection: 'row' }}>
+          <Button
+            transparent
+            onPress={actions.setModeMain}
+          >
+           <Icon name='arrow-back' />
+          </Button>
+          <Button onPress={this.saveParams}>
+            <Text>Save</Text>
+          </Button>
+        </View>
         <Content>
           <ListItem>
             <Body>
@@ -47,7 +70,7 @@ class RouteView extends Component<Props> {
                 maximumValue={0.15}
                 step={0.005}
                 value={uphill}
-                onValueChange={(value) => actions.setUphill(value)}
+                onValueChange={(value) => this.setUphill(value)}
               />
               <Text>{`Maximum uphill incline: ${(uphill * 100).toFixed(1)}`}%</Text>
             </Body>
@@ -59,7 +82,7 @@ class RouteView extends Component<Props> {
                 maximumValue={0.15}
                 step={0.005}
                 value={-downhill}
-                onValueChange={(value) => actions.setDownhill(-value)}
+                onValueChange={(value) => this.setDownhill(-value)}
               />
               <Text>{`Maximum downhill incline: ${(downhill * 100).toFixed(1)}%`}</Text>
             </Body>
@@ -69,9 +92,9 @@ class RouteView extends Component<Props> {
               checked={avoidStairs}
               onPress={() => {
                 if (avoidStairs) {
-                  actions.setAvoidStairsOff();
+                  this.setAvoidStairs(false);
                 } else {
-                  actions.setAvoidStairsOn();
+                  this.setAvoidStairs(true);
                 }
               }}
             />
@@ -84,9 +107,9 @@ class RouteView extends Component<Props> {
               checked={avoidCurbs}
               onPress={() => {
                 if (avoidCurbs) {
-                  actions.setAvoidCurbsOff();
+                  this.setAvoidCurbs(false);
                 } else {
-                  actions.setAvoidCurbsOn();
+                  this.setAvoidCurbs(true);
                 }
               }}
             />

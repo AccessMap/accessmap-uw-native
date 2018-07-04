@@ -28,7 +28,7 @@ export const OVERLAY_SEARCH = 'OVERLAY_SEARCH';
 
 export const CLEAR_POI = 'CLEAR_POI';
 
-export const SET_UPHILL = 'SET_UPHILL';
+export const SET_PROFILE_PARAMS = 'SET_PROFILE_PARAMS';
 export const SET_DOWNHILL = 'SET_DOWNHILL';
 export const SET_AVOID_STAIRS_ON = 'SET_AVOID_STAIRS_ON';
 export const SET_AVOID_STAIRS_OFF = 'SET_AVOID_STAIRS_OFF';
@@ -111,7 +111,6 @@ const profileChangeReroute = (newParam, dispatch, getState) => {
     // There's already a route - get a new one!
     const { profile } = state;
     const newProfile = { ...profile, ...newParam };
-    console.log(newProfile);
     requestRoute(origin, destination, newProfile, dispatch);
   };
 };
@@ -196,6 +195,11 @@ export const clearPOI = () => ({
 
 
 // User profile
+export const setProfileParams = (params) => (dispatch, getState) => {
+  dispatch({ type: SET_PROFILE_PARAMS, payload: params });
+  profileChangeReroute(params, dispatch, getState);
+};
+
 export const setUphill = (incline) => (dispatch, getState) => {
   dispatch({ type: SET_UPHILL, payload: incline });
   profileChangeReroute({ uphill: incline }, dispatch, getState);

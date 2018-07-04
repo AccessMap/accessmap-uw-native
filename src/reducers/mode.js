@@ -6,6 +6,7 @@ import {
   GEOCODED_DESTINATION,
   SET_MODE_MAIN,
   SET_MODE_PROFILE,
+  SET_PROFILE_PARAMS,
 } from '../actions';
 
 import { defaultMode as defaults } from './defaults';
@@ -13,6 +14,7 @@ import { defaultMode as defaults } from './defaults';
 export default (state = defaults, action) => {
   switch (action.type) {
     case SET_MODE_MAIN:
+    case SET_PROFILE_PARAMS:
       return 'main';
     case SET_MODE_PROFILE:
       return 'profile';
