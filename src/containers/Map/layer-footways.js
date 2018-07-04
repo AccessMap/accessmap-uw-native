@@ -1,24 +1,7 @@
 import React, { Component } from 'react';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 
-const styles = MapboxGL.StyleSheet.create({
-  footways: {
-    lineWidth: MapboxGL.StyleSheet.camera({
-      12: 1,
-      22: 10,
-    }, MapboxGL.InterpolationMode.Exponential),
-    lineColor: MapboxGL.StyleSheet.source([
-      [-1000, 'red'],
-      [-83, 'red'],
-      [-50, 'yellow'],
-      [0, 'lime'],
-      [50, 'yellow'],
-      [83, 'red'],
-      [1000, 'red'],
-    ], 'incline', MapboxGL.InterpolationMode.Exponential),
-  },
-});
-
+import styles from './map-styles';
 
 type Props = {};
 export default class LayerFootways extends Component<Props> {
@@ -29,9 +12,14 @@ export default class LayerFootways extends Component<Props> {
         url='mapbox://accessmap.ctv6lc9a'
       >
         <MapboxGL.LineLayer
+          id='footways-outline'
+          sourceLayerID='footways-bbud6k'
+          style={styles.sidewalksOutline}
+        />
+        <MapboxGL.LineLayer
           id='footways'
           sourceLayerID='footways-bbud6k'
-          style={styles.footways}
+          style={styles.sidewalks}
         />
       </MapboxGL.VectorSource>
     );

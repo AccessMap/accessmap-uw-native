@@ -80,10 +80,10 @@ class Map extends Component<Props> {
             }
           }}
         >
-          <LayerSidewalks />
           <LayerFootways />
           <LayerCrossings />
           <LayerStairs />
+          <LayerSidewalks />
           <LayerKerbs />
           <LayerElevators />
           { origin && (
