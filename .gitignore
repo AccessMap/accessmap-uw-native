@@ -11,6 +11,8 @@ config.js
 
 # Xcode
 #
+ios/*.jsbundle
+ios/*.jsbundle.meta
 build/
 *.pbxuser
 !default.pbxuser

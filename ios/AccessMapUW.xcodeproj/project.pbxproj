@@ -47,6 +47,7 @@
 		7288686373D444BB91B19AC3 /* libRCTMGL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9CC0802AA5F4FA1826CA353 /* libRCTMGL.a */; };
 		7F1FD12520EC844A00C16224 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F1FD12420EC844900C16224 /* Mapbox.framework */; };
 		7F1FD12620EC844A00C16224 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F1FD12420EC844900C16224 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7FC9434120ECAC5E00322641 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 7FC9431920ECAC5E00322641 /* main.jsbundle */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8B9AA32711C44CA09509D809 /* libRNGeocoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4AE978EE43D4DE791E61D76 /* libRNGeocoder.a */; };
 		9415C2A425A945B48BB28CC3 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CBAF966561C4A47B7F3D366 /* FontAwesome.ttf */; };
@@ -362,7 +363,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
 		00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGeolocation.xcodeproj; path = "../node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj"; sourceTree = "<group>"; };
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
@@ -397,6 +397,7 @@
 		6E4B85B37E874738AC64E733 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7F1FD12420EC844900C16224 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = "../node_modules/@mapbox/react-native-mapbox-gl/ios/Mapbox.framework"; sourceTree = "<group>"; };
+		7FC9431920ECAC5E00322641 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		88C948AF31CD4600B0AD839B /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		984860EA9F004A9D91BE404D /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
@@ -548,7 +549,7 @@
 		13B07FAE1A68108700A75B9A /* AccessMapUW */ = {
 			isa = PBXGroup;
 			children = (
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				7FC9431920ECAC5E00322641 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -1195,6 +1196,7 @@
 				9415C2A425A945B48BB28CC3 /* FontAwesome.ttf in Resources */,
 				394B4B033A98428082EDFE2D /* Foundation.ttf in Resources */,
 				31C61CE1B55F44D5ACA62C77 /* Ionicons.ttf in Resources */,
+				7FC9434120ECAC5E00322641 /* main.jsbundle in Resources */,
 				C689DDD2FA0844AEA926ADE5 /* MaterialCommunityIcons.ttf in Resources */,
 				6F219B282D594D5CAB0CF28A /* MaterialIcons.ttf in Resources */,
 				B8AB5FB785214A59A6A64A23 /* Octicons.ttf in Resources */,
@@ -1391,13 +1393,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-/*
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
-*/
 				FRAMEWORK_SEARCH_PATHS = (
-                                    "$(inherited)",
-                                    "$(PROJECT_DIR)/../node_modules/@mapbox/react-native-mapbox-gl/ios",
-                                );
+					"$(inherited)",
+					"$(PROJECT_DIR)/../node_modules/@mapbox/react-native-mapbox-gl/ios",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/@mapbox/react-native-mapbox-gl/ios/RCTMGL/**",
@@ -1420,7 +1419,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = "$(PROJECT_DIR)/../node_modules/@mapbox/react-native-mapbox-gl/ios";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../node_modules/@mapbox/react-native-mapbox-gl/ios",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/@mapbox/react-native-mapbox-gl/ios/RCTMGL/**",
