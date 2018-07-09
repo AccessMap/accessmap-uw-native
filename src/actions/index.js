@@ -1,3 +1,5 @@
+import config from '../../config';
+
 // action types
 export const MOVE_MAP = 'MOVE_MAP';
 export const PRESS_MAP = 'PRESS_MAP';
@@ -141,7 +143,7 @@ const requestRoute = (origin, destination, profile, dispatch) => {
     .map(k => `${esc(k)}=${esc(routeParams[k])}`)
     .join('&');
 
-  const query = `https://uw.accessmap.io/api/v2/route.json?${urlQuery}`;
+  const query = `${config.routeURL}?${urlQuery}`;
 
   fetch(query)
     .then((response) => {

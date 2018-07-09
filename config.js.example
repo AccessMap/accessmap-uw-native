@@ -1,0 +1,4 @@
+export default {
+  "mapboxAccessToken": "",
+  "routeURL": "route.json"
+}

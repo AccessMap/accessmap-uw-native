@@ -1,5 +1,7 @@
 # Project-specific
 config.js
+config.dev.js
+config.prod.js
 *.log
 
 # Vim
